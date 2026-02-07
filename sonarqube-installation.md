@@ -16,15 +16,15 @@ sudo -u postgres psql
 ```
 
 ## Configure Linux Machine
-
+```bash
 sysctl -w vm.max_map_count=524288
 sysctl -w fs.file-max=131072
 ulimit -n 131072
 ulimit -u 8192
-
+```
 
 ## Install and Configure Sonarqube
-
+```bash
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
 apt install unzip -y
 unzip sonarqube-25.5.0.107428.zip
@@ -41,7 +41,7 @@ su sonar
 cd /opt/sonar/bin/linux-x86-64
 ./sonar.sh start
 ./sonar.sh status 
-
+```
 
 ### Create Infrastructure Pipeline with Pull, Test (tf plan), Deploy (tf apply) stage 
 ### Create above pipeline to deploy EKS cluster
@@ -49,6 +49,7 @@ cd /opt/sonar/bin/linux-x86-64
 ## steps to configure 
 
 ## Install terraform in jenkins server
+```bash
 sudo apt update \
 && sudo apt install -y gnupg software-properties-common curl \
 && curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg \
@@ -57,7 +58,7 @@ sudo apt update \
 && sudo apt update \
 && sudo apt install -y terraform \
 && terraform version
-
+```
 
 ## Install kubectl in jenkins server
 
