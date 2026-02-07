@@ -61,69 +61,69 @@ sudo apt update \
 ```
 
 ## Install kubectl in jenkins server
-
+```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
 && chmod +x kubectl \
 && sudo mv kubectl /usr/local/bin/ \
 && kubectl version --clie
+```
 
 ## configure aws cli in jenkins server with access key and secret key
-
+```bash
 curl -O "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
  "awscliv2.zip" \
 && sudo apt install -y unzip \
 && unzip awscliv2.zip \
 && sudo ./aws/install \
 && aws --version
-
+```
 
 ### Deploy three tier application using pipeline on eks
 
 EC2 instance for Jenkins (Ubuntu)
-
 DockerHub account
-
 EKS Cluster already created
-
 sudo apt update -y
 
 ## Install AWS CLI
+```bash
 sudo apt install awscli -y
 aws --version
+```
 
 ## Install Docker
+```bash
 sudo apt install docker.io -y
 docker --version
-
+```
 
 ## Install kubectl
-
+```bash
 curl -LO https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 kubectl version --client
-
+```
 
 ## Allow Jenkins to Use Docker
-
+```bash
 sudo gpasswd -a jenkins docker
 sudo systemctl restart docker
 sudo systemctl restart jenkins
-
+```
 
 ## Login to DockerHub
-
+```bash
  su - jenkins
  docker login -u "username" -p "token"
+```
 
 ## Configure AWS Access for Jenkins
+```bash
  aws configure
-
  Configure EKS Access
-
  su - jenkins
  aws eks update-kubeconfig --region ap-south-1 --name <EKS_CLUSTER_NAME>
  kubectl get nodes
-
  kubectl get svc
-
+```
